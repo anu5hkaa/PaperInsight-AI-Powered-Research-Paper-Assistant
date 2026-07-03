@@ -399,6 +399,7 @@ streamlit run streamlit_app.py
 ## ⚖️ Compare Papers
 
 ![Compare](screenshots/compare1.png)
+![Compare](screenshots/compare2.png)
 ![Compare](screenshots/compare3.png)
 ![Compare](screenshots/compare4.png)
 

@@ -1,13 +1,3 @@
-"""
-app.py  –  ResearchGPT FastAPI Backend
----------------------------------------
-Replace: src/pdf_processing/retrieval/app.py
-
-Adds:
-  • POST /upload  — accepts PDF bytes, runs the full ingest pipeline
-  • GET  /papers  — lists all papers currently in ChromaDB
-All existing endpoints (/ask, /summary, /compare) are unchanged.
-"""
 
 import sys
 from pathlib import Path

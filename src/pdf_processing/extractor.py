@@ -1,19 +1,8 @@
-"""
-extractor.py
-------------
-Extracts raw text from an uploaded PDF and saves it to data/extracted/<paper_name>.txt
-
-Upload PDF -> Extract Text -> Save TXT (this module)
-"""
 
 from pathlib import Path
 from pypdf import PdfReader
 
-# ==========================================================
-# Paths
-# ==========================================================
-# extractor.py lives directly in src/pdf_processing/, so:
-# parents[0] = pdf_processing, parents[1] = src, parents[2] = PROJECT_ROOT
+
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 
 EXTRACTED_DIR = PROJECT_ROOT / "data" / "extracted"

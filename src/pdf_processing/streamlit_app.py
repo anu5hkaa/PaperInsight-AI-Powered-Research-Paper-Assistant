@@ -1,20 +1,8 @@
-"""
-streamlit_app.py  –  ResearchGPT  (production UI)
----------------------------------------------------
-Replace: src/pdf_processing/streamlit_app.py
-
-Adds:
-  • Upload 1–2 PDFs with automatic pipeline execution
-  • Session-scoped paper tracking
-  • Beige / cream minimal SaaS design
-  • All existing QA / Summarize / Compare tabs preserved
-"""
 
 import sys
 import os
 from pathlib import Path
 
-# ── make retrieval/pipeline/vectordb modules importable ─────
 PDF_PROCESSING_DIR = Path(__file__).resolve().parent
 RETRIEVAL_DIR = PDF_PROCESSING_DIR / "retrieval"
 PIPELINE_DIR = PDF_PROCESSING_DIR / "pipeline"
@@ -37,9 +25,6 @@ st.set_page_config(
     initial_sidebar_state="collapsed",
 )
 
-# ============================================================
-# CSS  – beige / cream / minimal SaaS
-# ============================================================
 
 st.markdown(
     """
@@ -212,19 +197,11 @@ hr { border-color: #E8DDD0; }
     unsafe_allow_html=True,
 )
 
-# ============================================================
-# Session state
-# ============================================================
-
 if "session_papers" not in st.session_state:
     st.session_state.session_papers = []   # papers uploaded THIS session
 if "ingest_results" not in st.session_state:
     st.session_state.ingest_results = []
 
-
-# ============================================================
-# Header
-# ============================================================
 
 st.markdown("## 📚 ResearchGPT")
 st.markdown(
@@ -233,10 +210,6 @@ st.markdown(
     unsafe_allow_html=True,
 )
 st.markdown("---")
-
-# ============================================================
-# Upload Section
-# ============================================================
 
 st.markdown("### Upload Papers")
 st.markdown(
@@ -253,7 +226,7 @@ uploaded_files = st.file_uploader(
     label_visibility="collapsed",
 )
 
-# Enforce 2-file limit
+
 if uploaded_files and len(uploaded_files) > 2:
     st.markdown(
         "<div class='banner-error'>⚠️ Please upload a maximum of 2 PDFs at a time.</div>",
@@ -261,7 +234,7 @@ if uploaded_files and len(uploaded_files) > 2:
     )
     uploaded_files = uploaded_files[:2]
 
-# ── Process button ───────────────────────────────────────────
+
 if uploaded_files:
     filenames = [f.name for f in uploaded_files]
     st.markdown(
@@ -332,7 +305,7 @@ if uploaded_files:
                         unsafe_allow_html=True,
                     )
 
-# ── Show active papers ───────────────────────────────────────
+
 all_db_papers = list_papers()
 
 if all_db_papers:
@@ -348,9 +321,6 @@ if all_db_papers:
 
 st.markdown("---")
 
-# ============================================================
-# Guard: nothing in DB yet → don't show feature tabs
-# ============================================================
 
 if not all_db_papers:
     st.markdown(
@@ -360,16 +330,10 @@ if not all_db_papers:
     )
     st.stop()
 
-# ============================================================
-# Feature Tabs
-# ============================================================
 
 tab1, tab2, tab3 = st.tabs(["💬  Ask a Question", "📝  Summarize", "⚖️  Compare"])
 
 
-# ──────────────────────────────────────────────────────────────
-# TAB 1 – QA
-# ──────────────────────────────────────────────────────────────
 
 with tab1:
     st.markdown("### Ask a Question")
@@ -458,9 +422,7 @@ with tab1:
                     )
 
 
-# ──────────────────────────────────────────────────────────────
-# TAB 2 – Summarize
-# ──────────────────────────────────────────────────────────────
+
 
 with tab2:
     st.markdown("### Summarize a Paper")
@@ -529,9 +491,6 @@ with tab2:
                 )
 
 
-# ──────────────────────────────────────────────────────────────
-# TAB 3 – Compare
-# ──────────────────────────────────────────────────────────────
 
 with tab3:
     st.markdown("### Compare Two Papers")
@@ -627,7 +586,7 @@ with tab3:
                             unsafe_allow_html=True,
                         )
 
-# ── footer ───────────────────────────────────────────────────
+
 st.markdown("---")
 st.markdown(
     "<p style='text-align:center;color:#A08060;font-size:0.8rem;'>"

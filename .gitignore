@@ -1,24 +1,30 @@
-# Virtual Environment
+
 venv/
 .env
 
-# Python Cache
+
 __pycache__/
 *.pyc
 
-# IDE
+
 .vscode/
 .idea/
 
-# Jupyter
+
 .ipynb_checkpoints/
 
-# OS
+
 .DS_Store
 
-# Logs
+
 *.log
 
-# SQLite
+
 *.db
 *.sqlite3
+
+
+data/chroma_db/
+data/chunks/
+data/embeddings/
+data/extracted/

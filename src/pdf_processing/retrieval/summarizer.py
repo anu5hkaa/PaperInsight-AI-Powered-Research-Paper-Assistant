@@ -3,17 +3,9 @@ from retriever import retrieve_complete_paper
 from generator import generate_answer
 import time
 
-# ==========================================
-# CONFIG
-# ==========================================
-
 BATCH_SIZE = 40
 MERGE_SIZE = 3
 
-
-# ==========================================
-# LEVEL 1 SUMMARY
-# ==========================================
 
 def summarize_batch(context):
 
@@ -38,10 +30,6 @@ Context:
     return generate_answer(prompt)
 
 
-# ==========================================
-# LEVEL 2 MERGE
-# ==========================================
-
 def merge_summaries(summaries):
 
     combined = "\n\n".join(summaries)
@@ -62,9 +50,6 @@ Summaries:
     return generate_answer(prompt)
 
 
-# ==========================================
-# FINAL SUMMARY
-# ==========================================
 
 def generate_final_summary(
     paper_name,
@@ -113,24 +98,15 @@ Context:
     return generate_answer(prompt)
 
 
-# ==========================================
-# MAIN FUNCTION
-# ==========================================
 
 def summarize_paper(paper_name):
 
-    # --------------------------------------
-    # Detect Paper
-    # --------------------------------------
-
+    
     print(
     f"\nSelected Paper: {paper_name}"
 )
 
-    # --------------------------------------
-    # Retrieve Full Paper
-    # --------------------------------------
-
+    
     results = retrieve_complete_paper(
         paper_name
     )
@@ -141,11 +117,6 @@ def summarize_paper(paper_name):
     print(
         f"Loaded {len(documents)} chunks."
     )
-
-    # --------------------------------------
-    # LEVEL 1
-    # Chunk -> Summary
-    # --------------------------------------
 
     batch_summaries = []
 
@@ -202,11 +173,6 @@ def summarize_paper(paper_name):
 
         time.sleep(3)
 
-    # --------------------------------------
-    # LEVEL 2
-    # Merge Summaries
-    # --------------------------------------
-
     merged_summaries = []
 
     for i in range(
@@ -236,10 +202,7 @@ def summarize_paper(paper_name):
 
         time.sleep(3)
 
-    # --------------------------------------
-    # LEVEL 3
-    # Final Summary
-    # --------------------------------------
+
 
     final_context = "\n\n".join(
         merged_summaries
@@ -267,10 +230,7 @@ def summarize_paper(paper_name):
         "Final summary generation failed."
     )
 
-    # --------------------------------------
-    # Return Structure
-    # --------------------------------------
-
+    
     return {
         "paper_name": paper_name,
         "summary": final_summary,

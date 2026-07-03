@@ -35,9 +35,7 @@ def compare_using_summaries(
 
     context = f"""
 
-==========================
-PAPER A
-==========================
+
 
 Paper Name:
 {paper_a}
@@ -47,9 +45,7 @@ Summary:
 {summary_a["summary"]}
 
 
-==========================
-PAPER B
-==========================
+
 
 Paper Name:
 {paper_b}

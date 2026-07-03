@@ -1,6 +1,3 @@
-# ==========================================================
-# QUESTION ANSWERING PROMPT
-# ==========================================================
 
 def build_qa_prompt(question, context):
 
@@ -41,9 +38,6 @@ Question
     return prompt
 
 
-# ==========================================================
-# SUMMARIZATION PROMPT
-# ==========================================================
 
 def build_summary_prompt(context):
 
@@ -107,10 +101,6 @@ Research Paper
     return prompt
 
 
-# ==========================================================
-# COMPARISON PROMPT
-# ==========================================================
-
 def build_comparison_prompt(context):
 
     return f"""
@@ -164,11 +154,6 @@ Do not hallucinate.
 """
 
 
-
-# ==========================================================
-# CITATION PROMPT
-# ==========================================================
-
 def build_citation_prompt(question, context):
 
     prompt = f"""
@@ -207,9 +192,6 @@ Question
     return prompt
 
 
-# ==========================================================
-# FIGURE UNDERSTANDING PROMPT
-# ==========================================================
 
 def build_figure_prompt(question, context):
 

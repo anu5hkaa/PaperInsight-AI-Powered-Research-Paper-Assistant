@@ -5,9 +5,6 @@ from comparision import compare_papers
 from paper_extractor import extract_papers
 from paper_classifier import classify_paper
 
-# ==========================================================
-# Detect User Intent
-# ==========================================================
 
 def detect_intent(question):
 
@@ -43,9 +40,6 @@ def detect_intent(question):
     return "qa"
 
 
-# ==========================================================
-# Main
-# ==========================================================
 
 def main():
 
@@ -57,10 +51,7 @@ def main():
         question
     )
 
-    # ======================================================
-    # SUMMARY
-    # ======================================================
-
+    
     if intent == "summary":
 
         result = summarize_paper(
@@ -75,23 +66,13 @@ def main():
             result["summary"]
         )
 
-    # ======================================================
-    # COMPARISON
-    # ======================================================
-
     elif intent == "comparison":
 
         print(
             "\n================ COMPARISON ================\n"
         )
 
-        # --------------------------------------------------
-        # Temporary hardcoded paper names
-        #
-        # Next module:
-        # Automatic paper extraction
-        # --------------------------------------------------
-
+       
         paper_a, paper_b = extract_papers(
             question
         )
@@ -102,10 +83,7 @@ def main():
             paper_b
         )
         print(answer)
-    # ======================================================
-    # QUESTION ANSWERING
-    # ======================================================
-
+    
     else:
 
         paper_name = classify_paper(
@@ -136,9 +114,6 @@ def main():
         )
 
 
-# ==========================================================
-# Run
-# ==========================================================
 
 if __name__ == "__main__":
 

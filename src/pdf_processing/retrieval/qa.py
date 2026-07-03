@@ -10,18 +10,11 @@ TOP_K = 5
 
 def answer_question(question,paper_name):
 
-    # =====================================
-    # STEP 1 : Detect Paper
-    # =====================================
-
     print(
     f"\nSelected Paper: {paper_name}"
 )
 
-    # =====================================
-    # STEP 2 : Retrieve Chunks
-    # =====================================
-
+  
     results = retrieve_chunks(
         question,
         paper_name
@@ -34,19 +27,12 @@ def answer_question(question,paper_name):
         f"Retrieved {len(documents)} chunks."
     )
 
-    # =====================================
-    # STEP 3 : Rerank
-    # =====================================
-
     reranked = rerank_chunks(
         question,
         documents
     )
 
-    # =====================================
-    # STEP 4 : Top Documents
-    # =====================================
-
+   
     top_docs = []
 
     
@@ -67,27 +53,17 @@ def answer_question(question,paper_name):
     for item in top_docs
 )
 
-    # =====================================
-    # STEP 5 : Prompt
-    # =====================================
-
     prompt = build_qa_prompt(
         question,
         context
     )
 
-    # =====================================
-    # STEP 6 : Gemini
-    # =====================================
-
+    
     answer = generate_answer(
         prompt
     )
 
-    # =====================================
-    # STEP 7 : Return
-    # =====================================
-
+    
     return {
         "paper_name": paper_name,
         "answer": answer,

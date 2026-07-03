@@ -1,24 +1,6 @@
-"""
-ingest.py
----------
-ResearchGPT Ingestion Pipeline
 
-Upload PDF
-    ↓
-Extract Text
-    ↓
-Chunk Text
-    ↓
-Generate Embeddings
-    ↓
-Store in ChromaDB
-"""
 
 from pathlib import Path
-
-# ==========================================================
-# Import reusable modules
-# ==========================================================
 
 from extractor import extract_text
 from chunking.chunking import create_chunks
@@ -29,10 +11,6 @@ from vectordb.chroma_setup import (
     paper_exists,
 )
 
-# ==========================================================
-# Paths
-# ==========================================================
-
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
 
 UPLOAD_DIR = PROJECT_ROOT / "data" / "uploads"
@@ -41,10 +19,6 @@ UPLOAD_DIR.mkdir(
     parents=True,
     exist_ok=True,
 )
-
-# ==========================================================
-# Save Uploaded PDF
-# ==========================================================
 
 def save_uploaded_pdf(
     pdf_bytes: bytes,
@@ -55,11 +29,6 @@ def save_uploaded_pdf(
     pdf_path.write_bytes(pdf_bytes)
 
     return pdf_path
-
-
-# ==========================================================
-# Main Pipeline
-# ==========================================================
 
 def ingest_pdf(
     pdf_bytes: bytes,
@@ -88,18 +57,13 @@ def ingest_pdf(
 
     try:
 
-        # ----------------------------------------------------
-        # Save uploaded PDF
-        # ----------------------------------------------------
-
+        
         pdf_path = save_uploaded_pdf(
             pdf_bytes,
             filename,
         )
 
-        # ----------------------------------------------------
-        # Step 1 : Extract Text
-        # ----------------------------------------------------
+        
 
         text_file, text = extract_text(str(
             pdf_path
@@ -118,10 +82,7 @@ def ingest_pdf(
             f"Characters extracted: {len(text)}"
         )
 
-        # ----------------------------------------------------
-        # Step 2 : Chunking
-        # ----------------------------------------------------
-
+        
         chunk_file, chunks = create_chunks(
             text_file
         )
@@ -129,10 +90,6 @@ def ingest_pdf(
         print(
             f"Chunks created: {len(chunks)}"
         )
-
-        # ----------------------------------------------------
-        # Step 3 : Embeddings
-        # ----------------------------------------------------
 
         embedding_file, embeddings = generate_embeddings(
             chunk_file
@@ -142,9 +99,7 @@ def ingest_pdf(
             f"Embeddings created: {len(embeddings)}"
         )
 
-        # ----------------------------------------------------
-        # Step 4 : ChromaDB
-        # ----------------------------------------------------
+        
 
         inserted, total_chunks = insert_embeddings(
             embedding_file

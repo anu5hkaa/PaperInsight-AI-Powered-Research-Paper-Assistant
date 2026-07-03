@@ -40,7 +40,7 @@ def generate_answer(prompt, retries=3):
             print("\nGemini Error:")
             print(e)
 
-            # Retry on quota / rate limit
+            
             if "429" in str(e):
 
                 wait_time = (attempt + 1) * 15
@@ -55,5 +55,5 @@ def generate_answer(prompt, retries=3):
 
                 break
 
-    # Final failure
+    
     return None

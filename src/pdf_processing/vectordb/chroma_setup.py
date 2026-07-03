@@ -2,9 +2,6 @@ import chromadb
 import json
 from pathlib import Path
 
-# ==========================================================
-# Paths
-# ==========================================================
 
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
 
@@ -18,9 +15,6 @@ collection = client.get_or_create_collection(
     name="research_papers"
 )
 
-# ==========================================================
-# Insert Embeddings
-# ==========================================================
 
 def insert_embeddings(embedding_file):
 
@@ -64,9 +58,6 @@ def insert_embeddings(embedding_file):
 
     return inserted, collection.count()
 
-# ==========================================================
-# Check if Paper Exists
-# ==========================================================
 
 def paper_exists(paper_name):
 
@@ -78,9 +69,6 @@ def paper_exists(paper_name):
     )
 
     return len(results["ids"]) > 0
-# ==========================================================
-# List Papers
-# ==========================================================
 
 def list_papers():
 
@@ -98,9 +86,6 @@ def list_papers():
     return papers
 
 
-# ==========================================================
-# Run Directly
-# ==========================================================
 
 if __name__ == "__main__":
 

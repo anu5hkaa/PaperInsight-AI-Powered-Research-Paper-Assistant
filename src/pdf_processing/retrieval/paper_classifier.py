@@ -8,9 +8,6 @@ if str(_PDF_PROCESSING_DIR) not in sys.path:
 
 from vectordb.chroma_setup import collection
 
-# Reuse the single lazily-loaded SentenceTransformer instance from
-# embeddings.embedding so the model is never loaded more than once
-# across the whole project (ingestion + retrieval + classification).
 from embeddings.embedding import get_model as get_embedding_model
 
 

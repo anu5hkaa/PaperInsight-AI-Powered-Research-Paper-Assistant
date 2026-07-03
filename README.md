@@ -19,22 +19,22 @@ AI-Powered Research Paper Assistant built using **Retrieval-Augmented Generation
 
 ---
 
-# 📖 Overview
+#  Overview
 
 PaperInsight is an intelligent Research Paper Assistant that helps users understand research papers through natural language interaction.
 
 Instead of manually reading long academic papers, users can upload one or more research papers and perform tasks such as:
 
-- ❓ Ask questions
-- 📝 Generate concise summaries
-- ⚖️ Compare two research papers
-- 🔍 Retrieve relevant sections using semantic search
+- Ask questions
+-  Generate concise summaries
+-  Compare two research papers
+-  Retrieve relevant sections using semantic search
 
 The application uses a Retrieval-Augmented Generation (RAG) pipeline to retrieve the most relevant information before generating responses with Google's Gemini Large Language Model.
 
 ---
 
-# 🎯 Motivation
+#  Motivation
 
 Reading research papers is often time-consuming and difficult due to their length and technical complexity.
 
@@ -44,9 +44,9 @@ The project focuses on generating grounded responses using retrieved information
 
 ---
 
-# ✨ Features
+#  Features
 
-## 📖 Question Answering
+##  Question Answering
 
 Upload a research paper and ask questions in natural language.
 
@@ -58,7 +58,7 @@ The system retrieves the most relevant sections before generating an answer.
 
 ---
 
-## 📝 Research Paper Summarization
+## Research Paper Summarization
 
 Generate structured summaries including:
 
@@ -72,7 +72,7 @@ This helps users understand lengthy research papers within seconds.
 
 ---
 
-## ⚖️ Compare Two Research Papers
+##  Compare Two Research Papers
 
 Upload two research papers and compare them across multiple aspects:
 
@@ -98,7 +98,7 @@ This allows the system to retrieve relevant information even when different word
 
 ---
 
-## 🎯 CrossEncoder Re-ranking
+## CrossEncoder Re-ranking
 
 Retrieved chunks are reranked using a CrossEncoder model to improve retrieval quality before being sent to the LLM.
 
@@ -106,7 +106,7 @@ This significantly improves answer relevance.
 
 ---
 
-# 🏗 System Architecture
+#  System Architecture
 
 ```
 

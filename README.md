@@ -386,20 +386,19 @@ streamlit run streamlit_app.py
 ## ❓ Question Answering
 
 ![QA](screenshots/questionans1.png)
-![QA](screenshots/questionans2.png)
+![QA](screenshots/questionanswer2.png)
 ---
 
 ## 📝 Summarization
 
 ![Summary](screenshots/summary1.png)
-![Summary](screenshots/summary2.png)
+![Summary](screenshots/summry2.png)
 
 ---
 
 ## ⚖️ Compare Papers
 
 ![Compare](screenshots/compare1.png)
-![Compare](screenshots/compare2.png)
 ![Compare](screenshots/compare3.png)
 ![Compare](screenshots/compare4.png)
 
